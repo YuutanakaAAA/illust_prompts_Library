@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -24,6 +24,14 @@ const PaginationDots = ({ total, current }: { total: number; current: number }) 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = 5;
+
+  // アニメーション用の状態
+  const [animateHero, setAnimateHero] = useState(false);
+
+  useEffect(() => {
+    // マウント時にアニメーション開始
+    setTimeout(() => setAnimateHero(true), 200);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-900 to-green-800">
@@ -63,10 +71,24 @@ export default function Home() {
         <div className="absolute bottom-1/4 left-1/3 w-40 h-px bg-white/20" />
         
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1
+            className={`text-4xl md:text-5xl font-bold text-white mb-4 transition-all duration-700
+              ${animateHero
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+              }`}
+            style={{ willChange: 'opacity, transform' }}
+          >
             AI Illust Prompt Library
           </h1>
-          <p className="text-green-100 text-lg md:text-xl max-w-2xl mx-auto">
+          <p
+            className={`text-green-100 text-lg md:text-xl max-w-2xl mx-auto transition-all duration-700 delay-200
+              ${animateHero
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+              }`}
+            style={{ willChange: 'opacity, transform' }}
+          >
             Stable Diffusion用の高品質なプロンプト集
           </p>
         </div>
