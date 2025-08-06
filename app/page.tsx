@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Plus } from 'lucide-react';
+import EnhancedHeroSection from '@/components/ui/EnhancedHeroSection'; // 新しいコンポーネントをインポート
 
 const PaginationDots = ({ total, current }: { total: number; current: number }) => (
   <div className="flex justify-center gap-2 my-8">
@@ -46,53 +47,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-r from-green-600 to-green-700 py-16 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='0' cy='30' r='4'/%3E%3Ccircle cx='60' cy='30' r='4'/%3E%3Ccircle cx='30' cy='0' r='4'/%3E%3Ccircle cx='30' cy='60' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }} />
-        </div>
-        {/* Geometric shapes */}
-        <div className="absolute top-10 left-10 w-20 h-20 border-2 border-white/30 rotate-45" />
-        <div className="absolute top-16 left-32 w-12 h-12 border border-white/20 rotate-12" />
-        <div className="absolute top-20 right-20 w-16 h-16 bg-white/10 rounded-full" />
-        <div className="absolute top-32 right-40 w-8 h-8 border border-white/25 rotate-45" />
-        <div className="absolute bottom-10 left-1/4 w-12 h-12 border-2 border-white/30 rotate-12" />
-        <div className="absolute bottom-16 left-16 w-16 h-16 border border-white/20 rounded-full" />
-        <div className="absolute bottom-20 right-1/3 w-8 h-8 bg-white/10" />
-        <div className="absolute bottom-32 right-16 w-10 h-10 border border-white/25 rotate-30" />
-        
-        {/* Decorative lines */}
-        <div className="absolute top-1/4 left-0 w-32 h-px bg-white/20" />
-        <div className="absolute top-1/3 right-0 w-24 h-px bg-white/15" />
-        <div className="absolute bottom-1/4 left-1/3 w-40 h-px bg-white/20" />
-        
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1
-            className={`text-4xl md:text-5xl font-bold text-white mb-4 transition-all duration-700
-              ${animateHero
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-              }`}
-            style={{ willChange: 'opacity, transform' }}
-          >
-            AI Illust Prompt Library
-          </h1>
-          <p
-            className={`text-green-100 text-lg md:text-xl max-w-2xl mx-auto transition-all duration-700 delay-200
-              ${animateHero
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-              }`}
-            style={{ willChange: 'opacity, transform' }}
-          >
-            Stable Diffusion用の高品質なプロンプト集
-          </p>
-        </div>
-      </section>
+      <EnhancedHeroSection />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-12">
