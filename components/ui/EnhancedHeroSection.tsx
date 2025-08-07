@@ -5,7 +5,7 @@ export default function EnhancedHeroSection() {
   const [charAnimIndex, setCharAnimIndex] = useState(0);
   
   // タイトルテキストを1文字ずつ配列化
-  const titleText = "AI Illust Prompt Library";
+  const titleText = "AI Illust \nPrompt Library";
   const titleChars = titleText.split('');
   
   // サブタイトルテキスト
@@ -90,20 +90,24 @@ export default function EnhancedHeroSection() {
           <span className="sr-only">{titleText}</span>
           <span aria-hidden="true" className="inline-block">
             {titleChars.map((char, index) => (
-              <span 
-                key={index}
-                className={`inline-block transition-all duration-300 transform ${
-                  animateHero && index <= charAnimIndex
-                    ? 'opacity-100 translate-y-0 scale-100'
-                    : 'opacity-0 translate-y-8 scale-50'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 50}ms`,
-                  willChange: 'opacity, transform'
-                }}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </span>
+              char === '\n' ? (
+                <br key={index} />
+              ) : (
+                <span 
+                  key={index}
+                  className={`inline-block transition-all duration-300 transform ${
+                    animateHero && index <= charAnimIndex
+                      ? 'opacity-100 translate-y-0 scale-100'
+                      : 'opacity-0 translate-y-8 scale-50'
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 50}ms`,
+                    willChange: 'opacity, transform'
+                  }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              )
             ))}
           </span>
           
